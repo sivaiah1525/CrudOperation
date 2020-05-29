@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="registrationsection">
+        <h2>Registration Form</h2>
+        <form [formGroup]="registrationform" (ngSubmit)=savedata(registrationform.value)>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="name">
+                <div *ngIf="registrationform.controls.name.errors">
+                    <span *ngIf="registrationform.controls.name.invalid && registrationform.controls.name.touched ">please Enter Name</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" formControlName="mailId" placeholder="Enter-email">
+                <div *ngIf="registrationform.controls.mailId.errors">
+                    <span *ngIf="registrationform.controls.mailId.invalid && registrationform.controls.mailId.touched ">please Enter mailId</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" formControlName="password" placeholder="Enter-password">
+                <div *ngIf="registrationform.controls.password.errors">
+                    <span *ngIf="registrationform.controls.password.invalid && registrationform.controls.password.touched ">please Enter password</span>
+                    <span *ngIf="registrationform.controls.password.errors.minlength"> Length 6 latter</span>
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" > Remember me
+            </label>
+            </div>
+            <button type="submit" [disabled]="registrationform.invalid" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>

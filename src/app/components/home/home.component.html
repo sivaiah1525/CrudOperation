@@ -1,0 +1,148 @@
+<app-navbar></app-navbar>
+<!-- table data list  -->
+
+<div class="container">
+    <div class="row m-1 justify-content-end">
+        <div class="col-sm-4 col-12 col-lg-4">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    CREAT NEW STUDENT
+  </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">STUDENT DETAILS</h5>
+                        </div>
+                        <!-- student details form  -->
+                        <div class="modal-body">
+                            <form [formGroup]="studentdetails" (ngSubmit)=CreatNewStudent(studentdetails.value)>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- student name  -->
+                                        <div class="form-group">
+                                            <label>studentname:</label>
+                                            <input type="text" class="form-control" formControlName="studentname" placeholder="name">
+                                            <div *ngIf="studentdetails.controls.studentname.errors">
+                                                <span *ngIf="studentdetails.controls.studentname.invalid && studentdetails.controls.studentname.touched ">please Enter studentname</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- father Name  -->
+                                        <div class="form-group">
+                                            <label>Fathername:</label>
+                                            <input type="text" class="form-control" formControlName="Fathername" placeholder="name">
+                                            <div *ngIf="studentdetails.controls.Fathername.errors">
+                                                <span *ngIf="studentdetails.controls.Fathername.invalid && studentdetails.controls.Fathername.touched ">please Enter Fathername</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- email id  -->
+                                <div class="form-group">
+                                    <label>Email:</label>
+                                    <input type="email" class="form-control" formControlName="mailId" placeholder="Enter-email">
+                                    <div *ngIf="studentdetails.controls.mailId.errors">
+                                        <span *ngIf="studentdetails.controls.mailId.invalid && studentdetails.controls.mailId.touched ">please Enter mailId</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- date of birth  -->
+                                        <div class="form-group">
+                                            <label>date of birth:</label>
+                                            <input type="date" class="form-control" formControlName="DOF" placeholder="date of birth">
+                                            <div *ngIf="studentdetails.controls.DOF.errors">
+                                                <span *ngIf="studentdetails.controls.DOF.invalid && studentdetails.controls.DOF.touched ">please Enter date of birth</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <!-- Roll Number  -->
+                                        <div class="form-group">
+                                            <label>RollNo:</label>
+                                            <input type="number" class="form-control" formControlName="RollNo" placeholder="Enter-RollNo">
+                                            <div *ngIf="studentdetails.controls.RollNo.errors">
+                                                <span *ngIf="studentdetails.controls.RollNo.invalid && studentdetails.controls.RollNo.touched ">please Enter RollNo</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- Rank  -->
+                                        <div class="form-group">
+                                            <label>Rank:</label>
+                                            <select class="form-control" formControlName="Rank">
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="F">F</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- department  -->
+                                        <div class="form-group">
+                                            <label>Departent:</label>
+                                            <select class="form-control" formControlName="Departent">
+                                                <option value="Mech">Mech</option>
+                                                <option value="ECE">ECE</option>
+                                                <option value="EEE">EEE</option>
+                                                <option value="CSC">CSC</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                    <button type="submit" [disabled]="studentdetails.invalid" class="btn btn-primary">ADD STUDENT</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table-responsive  -->
+    <div class="row">
+        <div class="table-responsive">
+            <h2>studentes List</h2>
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">S.no</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">MailId</th>
+                        <th scope="col">RollNo</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of studentlist;index as i;">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{x.studentname}}</td>
+                        <td>{{x.mailId}}</td>
+                        <td>{{x.RollNo}}</td>
+                        <td>
+                            <div class="dropdown">
+                                <span data-toggle="dropdown"><h5 class="menuicon">ooo</h5></span>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" routerLink="/student-edit">EDIT</a>
+                                    <a class="dropdown-item" (click)="studentByIdDelet(x._id)">DELET</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

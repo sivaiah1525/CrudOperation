@@ -1,0 +1,14 @@
+button {
+    width: 100%;
+    margin: 5px;
+    align-items: center;
+    outline: unset;
+    border: unset;
+}
+
+.menuicon {
+    font-size: 10px;
+    font-weight: 900;
+    color: blue;
+    cursor: pointer;
+}
