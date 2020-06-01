@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-student-view',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-view.component.css']
 })
 export class StudentViewComponent implements OnInit {
-
-  constructor() { }
+  studentdetails: any;
+  constructor(
+    private router: ActivatedRoute,
+    private location: Location
+  ) {
+    this.  studentView();
+  }
 
   ngOnInit(): void {
+  }
+  studentView() {
+    this.router.params.subscribe(params => {
+      this.studentdetails = params;
+    });
   }
 
 }

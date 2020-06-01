@@ -1,1 +1,19 @@
-<p>student-view works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row mt-4 justify-content-center">
+        <div class="col-sm-6 ">
+            <div class="row">
+                <h3>STUDENT DETAILS</h3>
+            </div>
+            <h5>STUDENTNAME : {{studentdetails.studentname}}</h5>
+            <h5>FATHERNAME : {{studentdetails.Fathername}}</h5>
+            <h5>MAILID : {{studentdetails.mailId}}</h5>
+            <h5>DATE OF BIRTH : {{studentdetails.DOF}}</h5>
+            <h5>RANK : {{studentdetails.Rank}}</h5>
+            <h5>ROLLNUMBER : {{studentdetails.RollNo}}</h5>
+            <h5>DEPARTMENT : {{studentdetails.Departent}}</h5>
+            <button type="button" routerLink="/student-edit" class="btn btn-primary">EDIT STUDENT</button>
+
+        </div>
+    </div>
+</div>

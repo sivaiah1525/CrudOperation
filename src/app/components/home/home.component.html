@@ -119,9 +119,10 @@
                 <thead>
                     <tr>
                         <th scope="col">S.no</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">MailId</th>
-                        <th scope="col">RollNo</th>
+                        <th scope="col" class="p-3"> Name <i class="fa fa-sort" (click)="pagesort()" style="font-size:30px; position: relative; top: 5px; cursor: pointer;"></i></th>
+                        <th scope="col">MailId </th>
+                        <th scope="col">RollNo
+                        </th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -135,14 +136,26 @@
                             <div class="dropdown">
                                 <span data-toggle="dropdown"><h5 class="menuicon">ooo</h5></span>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" routerLink="/student-edit">EDIT</a>
-                                    <a class="dropdown-item" (click)="studentByIdDelet(x._id)">DELET</a>
+                                    <a class="dropdown-item" (click)="studentedit(x)">EDIT STUDENT</a>
+                                    <a class="dropdown-item" (click)="studentview(x)">VIEW STUDENT</a>
+                                    <a class="dropdown-item" (click)="studentByIdDelet(x._id)">DELET STUDENT</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
+
+            <!-- pagination  -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" (click)="pagination(0)">Previous</a></li>
+                    <li class="page-item"><a class="page-link" (click)="pagination(2)">1</a></li>
+                    <li class="page-item"><a class="page-link" (click)="pagination(4)">2</a></li>
+                    <li class="page-item"><a class="page-link" (click)="pagination(6)">3</a></li>
+                    <li class="page-item"><a class="page-link" (click)="pagination(8)">Next</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

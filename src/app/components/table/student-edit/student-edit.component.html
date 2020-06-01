@@ -1,2 +1,94 @@
 <app-navbar></app-navbar>
-<p>student-edit works!</p>
+
+<div class="container">
+    <!-- student details form  -->
+    <div class="row mt-5 justify-content-center">
+        <div class="col-sm-8">
+            <form [formGroup]="studenteditdetails" (ngSubmit)=UpdateStudent(studenteditdetails.value)>
+                <div class="row">
+                    <h5 class="modal-title">STUDENT DETAILS</h5>
+                </div>
+                <div class="row mt-3 justify-content-around">
+                    <div class="col-sm-6">
+                        <!-- student name  -->
+                        <div class="form-group">
+                            <label>studentname:</label>
+                            <input type="text" class="form-control" formControlName="studentname" placeholder="name">
+                            <div *ngIf="studenteditdetails.controls.studentname.errors">
+                                <span *ngIf="studenteditdetails.controls.studentname.invalid && studenteditdetails.controls.studentname.touched ">please Enter studentname</span>
+                            </div>
+                        </div>
+                        <!-- father Name  -->
+                        <div class="form-group">
+                            <label>Fathername:</label>
+                            <input type="text" class="form-control" formControlName="Fathername" placeholder="name">
+                            <div *ngIf="studenteditdetails.controls.Fathername.errors">
+                                <span *ngIf="studenteditdetails.controls.Fathername.invalid && studenteditdetails.controls.Fathername.touched ">please Enter Fathername</span>
+                            </div>
+                        </div>
+                        <!-- email id  -->
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" class="form-control" formControlName="mailId" placeholder="Enter-email">
+                            <div *ngIf="studenteditdetails.controls.mailId.errors">
+                                <span *ngIf="studenteditdetails.controls.mailId.invalid && studenteditdetails.controls.mailId.touched ">please Enter mailId</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+
+                        <!-- date of birth  -->
+                        <div class="form-group">
+                            <label>date of birth:</label>
+                            <input type="date" class="form-control" formControlName="DOF" placeholder="date of birth">
+                            <div *ngIf="studenteditdetails.controls.DOF.errors">
+                                <span *ngIf="studenteditdetails.controls.DOF.invalid && studenteditdetails.controls.DOF.touched ">please Enter date of birth</span>
+                            </div>
+                        </div>
+
+                        <!-- Roll Number  -->
+                        <div class="form-group">
+                            <label>RollNo:</label>
+                            <input type="number" class="form-control" formControlName="RollNo" placeholder="Enter-RollNo">
+                            <div *ngIf="studenteditdetails.controls.RollNo.errors">
+                                <span *ngIf="studenteditdetails.controls.RollNo.invalid && studenteditdetails.controls.RollNo.touched ">please Enter RollNo</span>
+                            </div>
+                        </div>
+
+                        <!-- Rank  -->
+                        <div class="form-group">
+                            <label>Rank:</label>
+                            <select class="form-control" formControlName="Rank">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="F">F</option>
+                              </select>
+                        </div>
+                        <!-- department  -->
+                        <div class="form-group">
+                            <label>Departent:</label>
+                            <select class="form-control" formControlName="Departent">
+                                <option value="Mech">Mech</option>
+                                <option value="ECE">ECE</option>
+                                <option value="EEE">EEE</option>
+                                <option value="CSC">CSC</option>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-around">
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-primary" (click)="cancel()">CANCEL</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="submit" [disabled]="studenteditdetails.invalid" class="btn btn-primary">EDIT STUDENT</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

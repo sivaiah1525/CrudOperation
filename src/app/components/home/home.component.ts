@@ -1,8 +1,8 @@
-import { async } from '@angular/core/testing';
 import { TableService } from './../../service/tableserv/table.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +10,19 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  studentlist: any;
-  studentdetails: any;
+
   constructor(
     private service: TableService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.ListOfStudentes();
   }
+  studentlist: any;
+  studentdetails: any;
+  skipcont: any;
+  sortcount = 1;
+  elements: any = [];
 
   ngOnInit(): void {
     this.studentdetails = new FormGroup({
@@ -26,18 +31,42 @@ export class HomeComponent implements OnInit {
       mailId: new FormControl(null, [Validators.required]),
       RollNo: new FormControl(null, [Validators.required]),
       DOF: new FormControl(null, [Validators.required]),
-      Rank: new FormControl(null, [Validators.required]),
-      Departent: new FormControl(null, [Validators.required]),
+      Rank: new FormControl('A', [Validators.required]),
+      Departent: new FormControl('mech', [Validators.required]),
     });
   }
 
+
+  studentview(data) {
+    this.router.navigate(['/student-view', data]);
+  }
+
+  studentedit(data) {
+    this.router.navigate(['/student-edit', data ]);
+  }
+  pagination(data) {
+    this.skipcont = data;
+    this.ListOfStudentes();
+
+  }
+  pagesort() {
+    if (this.sortcount === 1) {
+      this.sortcount = -1;
+      return this.ListOfStudentes();
+    }
+    else {
+      this.sortcount = 1;
+      return this.ListOfStudentes();
+
+    }
+  }
 
 
 
   async ListOfStudentes() {
     try {
-      this.studentlist = await this.service.GetStudentlist();
-      console.log(this.studentlist);
+      const limit = 5;
+      this.studentlist = await this.service.GetStudentlist(limit, this.skipcont, this.sortcount);
     } catch (error) {
       console.log(error);
     }
@@ -63,6 +92,7 @@ export class HomeComponent implements OnInit {
       console.log(error);
     }
   }
+
 
 }
 
