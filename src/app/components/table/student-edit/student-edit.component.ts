@@ -43,6 +43,7 @@ export class StudentEditComponent implements OnInit {
   // updateStudent Details
   UpdateStudent(data) {
     try {
+      console.log(data);
       this.location.back();
     } catch (error) {
       console.log(error);

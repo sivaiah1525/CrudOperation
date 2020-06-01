@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-view',
@@ -11,9 +11,10 @@ export class StudentViewComponent implements OnInit {
   studentdetails: any;
   constructor(
     private router: ActivatedRoute,
+    private route: Router,
     private location: Location
   ) {
-    this.  studentView();
+    this.studentView();
   }
 
   ngOnInit(): void {
@@ -22,6 +23,10 @@ export class StudentViewComponent implements OnInit {
     this.router.params.subscribe(params => {
       this.studentdetails = params;
     });
+  }
+
+  editstudent() {
+    this.route.navigate(['/student-edit', this.studentdetails]);
   }
 
 }
