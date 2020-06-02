@@ -31,5 +31,10 @@ export class TableService {
     const url = 'http://localhost:5000/user/student/deletbyid';
     return this.http.post(url, { id: data }).toPromise();
   }
+  // Updatebyid
+  StudentUpdateById(data) {
+    const url = 'http://localhost:5000/user/student/updatebyid';
+    return this.http.post(url, data).toPromise();
+  }
 
 }

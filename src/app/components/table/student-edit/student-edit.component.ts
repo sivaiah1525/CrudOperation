@@ -1,3 +1,4 @@
+import { TableService } from './../../../service/tableserv/table.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,8 @@ export class StudentEditComponent implements OnInit {
   studenteditdetails: any;
   constructor(
     private router: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private service: TableService
   ) {
     this.studentEdit();
   }
@@ -35,7 +37,7 @@ export class StudentEditComponent implements OnInit {
       this.studentdetails = params;
     });
   }
-  cancel(){
+  cancel() {
     this.location.back();
 
   }
@@ -43,7 +45,7 @@ export class StudentEditComponent implements OnInit {
   // updateStudent Details
   UpdateStudent(data) {
     try {
-      console.log(data);
+      this.service.StudentUpdateById(data);
       this.location.back();
     } catch (error) {
       console.log(error);
