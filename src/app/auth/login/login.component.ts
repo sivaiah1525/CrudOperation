@@ -1,3 +1,4 @@
+import { TokenServiceService } from './../../service/token-service.service';
 import { LoginService } from './../../service/auth/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
@@ -10,9 +11,11 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginform: FormGroup;
+  JWTtoken: any;
   constructor(
     private service: LoginService,
-    private router: Router
+    private router: Router,
+    private tokenserv: TokenServiceService
   ) { }
 
   ngOnInit(): void {
@@ -23,12 +26,13 @@ export class LoginComponent implements OnInit {
 
   }
 
- async savedata(data) {
+  async savedata(data) {
     try {
-      const token = await this.service.LoginUser(data);
-      console.log(token);
+      this.JWTtoken = await this.service.LoginUser(data);
+      this.tokenserv.saveToken(this.JWTtoken);
       this.router.navigate(['/home']);
     } catch (error) {
+      alert('invalid mailid password');
       console.log(error);
     }
   }

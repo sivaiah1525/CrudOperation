@@ -69,6 +69,7 @@ export class HomeComponent implements OnInit {
     table = document.getElementById('myTable');
     tr = table.getElementsByTagName('tr');
     for (i = 0; i < tr.length; i++) {
+      console.log(i);
       td = tr[i].getElementsByTagName('td')[0];
       if (td) {
         txtValue = td.textContent || td.innerText;
@@ -81,7 +82,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
+  // ListOfStudentes
   async ListOfStudentes() {
     try {
       const limit = 5;
@@ -91,6 +92,7 @@ export class HomeComponent implements OnInit {
     }
 
   }
+  // CreatNewStudent
   async CreatNewStudent(data) {
     try {
       await this.service.CreatStudent(data);
@@ -100,7 +102,7 @@ export class HomeComponent implements OnInit {
       console.log(error);
     }
   }
-
+  // studentByIdDelet
   async studentByIdDelet(data) {
     try {
       await this.service.StudentDeletById(data);
