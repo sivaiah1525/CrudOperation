@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   studentdetails: any;
   skipcont: any;
   sortcount = 1;
-  search = 'Ku';
+  search = '';
 
   ngOnInit(): void {
     this.studentdetails = new FormGroup({
