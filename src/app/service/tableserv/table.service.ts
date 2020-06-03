@@ -16,11 +16,12 @@ export class TableService {
   }
 
   // GetStudent LIST
-  GetStudentlist(limit, skip, sort) {
+  GetStudentlist(limit, skip, sort, search) {
     const params: any = {
       limit,
       skip,
-      sort
+      sort,
+      search
     };
     const url = 'http://localhost:5000/user/student/all';
     return this.http.get(url, { params }).toPromise();

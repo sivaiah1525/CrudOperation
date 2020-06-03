@@ -8,9 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ToastrModule } from 'ngx-toastr';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentEditComponent } from './components/table/student-edit/student-edit.component';
 import { StudentViewComponent } from './components/table/student-view/student-view.component';
+import { DemoMaterialModule } from './material/material/material.module';
 
 
 
@@ -28,7 +30,8 @@ import { StudentViewComponent } from './components/table/student-view/student-vi
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    DemoMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

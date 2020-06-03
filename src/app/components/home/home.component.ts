@@ -1,5 +1,5 @@
 import { TableService } from './../../service/tableserv/table.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private service: TableService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
   ) {
     this.ListOfStudentes();
   }
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   studentdetails: any;
   skipcont: any;
   sortcount = 1;
-  elements: any = [];
+  search: any;
 
   ngOnInit(): void {
     this.studentdetails = new FormGroup({
@@ -36,18 +36,21 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  print(event) {
+    this.search = event.target.value;
+    this.ListOfStudentes();
+  }
 
   studentview(data) {
     this.router.navigate(['/student-view', data]);
   }
 
   studentedit(data) {
-    this.router.navigate(['/student-edit', data ]);
+    this.router.navigate(['/student-edit', data]);
   }
   pagination(data) {
     this.skipcont = data;
     this.ListOfStudentes();
-
   }
   pagesort() {
     if (this.sortcount === 1) {
@@ -57,36 +60,15 @@ export class HomeComponent implements OnInit {
     else {
       this.sortcount = 1;
       return this.ListOfStudentes();
-
     }
   }
 
-   myFunction() {
-    // tslint:disable-next-line: one-variable-per-declaration
-    let input, filter: any, table, tr, td, i, txtValue;
-    input = document.getElementById('myInput');
-    filter = input.value.toUpperCase();
-    table = document.getElementById('myTable');
-    tr = table.getElementsByTagName('tr');
-    for (i = 0; i < tr.length; i++) {
-      console.log(i);
-      td = tr[i].getElementsByTagName('td')[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = '';
-        } else {
-          tr[i].style.display = 'none';
-        }
-      }
-    }
-  }
 
   // ListOfStudentes
   async ListOfStudentes() {
     try {
       const limit = 5;
-      this.studentlist = await this.service.GetStudentlist(limit, this.skipcont, this.sortcount);
+      this.studentlist = await this.service.GetStudentlist(limit, this.skipcont, this.sortcount, this.search);
     } catch (error) {
       console.log(error);
     }
