@@ -23,6 +23,7 @@ export class StudentEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.studenteditdetails = new FormGroup({
+      id: new FormControl(this.studentdetails._id),
       studentname: new FormControl(this.studentdetails.studentname, [Validators.required]),
       Fathername: new FormControl(this.studentdetails.Fathername, [Validators.required]),
       mailId: new FormControl(this.studentdetails.mailId, [Validators.required]),
@@ -39,7 +40,6 @@ export class StudentEditComponent implements OnInit {
   }
   cancel() {
     this.location.back();
-
   }
 
   // updateStudent Details

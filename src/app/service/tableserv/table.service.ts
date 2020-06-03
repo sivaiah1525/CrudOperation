@@ -17,6 +17,7 @@ export class TableService {
 
   // GetStudent LIST
   GetStudentlist(limit, skip, sort, search) {
+    console.log(search);
     const params: any = {
       limit,
       skip,
@@ -34,8 +35,9 @@ export class TableService {
   }
   // Updatebyid
   StudentUpdateById(data) {
+
     const url = 'http://localhost:5000/user/student/updatebyid';
-    return this.http.post(url, data).toPromise();
+    return this.http.put(url, data).toPromise();
   }
 
 }

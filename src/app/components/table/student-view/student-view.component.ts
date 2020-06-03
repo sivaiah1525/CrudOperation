@@ -26,7 +26,7 @@ export class StudentViewComponent implements OnInit {
   }
 
   editstudent() {
-    this.route.navigate(['/student-edit', this.studentdetails]);
+    this.location.back();
   }
 
 }

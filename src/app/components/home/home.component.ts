@@ -1,5 +1,6 @@
+import { Location } from '@angular/common';
 import { TableService } from './../../service/tableserv/table.service';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
     private service: TableService,
     private toastr: ToastrService,
     private router: Router,
+    private location: Location
   ) {
     this.ListOfStudentes();
   }
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit {
   studentdetails: any;
   skipcont: any;
   sortcount = 1;
-  search: any;
+  search = 'Ku';
 
   ngOnInit(): void {
     this.studentdetails = new FormGroup({

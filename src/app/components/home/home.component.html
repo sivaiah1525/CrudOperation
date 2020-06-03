@@ -124,7 +124,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <input type="text" (input)="print($event)" value="s" id="myInput" placeholder="Search for StudentNames..">
+            <input type="text" (input)="print($event)" value="" id="myInput" placeholder="Search for StudentNames..">
         </div>
     </div>
 
@@ -137,8 +137,8 @@
                         <th scope="col">S.no</th>
                         <th scope="col" class="p-3"> Name <i class="fa fa-sort" (click)="pagesort()" style="font-size:30px; position: relative; top: 5px; cursor: pointer;"></i></th>
                         <th scope="col">MailId </th>
-                        <th scope="col">RollNo
-                        </th>
+                        <th scope="col">RollNo</th>
+                        <th scope="col">D-O-F</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -148,6 +148,7 @@
                         <td>{{x.studentname}}</td>
                         <td>{{x.mailId}}</td>
                         <td>{{x.RollNo}}</td>
+                        <td>{{x.DOF}}</td>
                         <td>
                             <div class="dropdown">
                                 <span data-toggle="dropdown"><h5 class="menuicon">ooo</h5></span>
