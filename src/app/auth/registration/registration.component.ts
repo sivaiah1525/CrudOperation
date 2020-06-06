@@ -13,7 +13,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private service: CreatuserService,
-    private router: Router) { }
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
     this.registrationform = new FormGroup({

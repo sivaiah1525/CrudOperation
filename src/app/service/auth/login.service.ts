@@ -5,13 +5,22 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginService {
-  url = 'http://localhost:5000/user/login';
 
   constructor(
     private http: HttpClient
   ) { }
 
   LoginUser(data) {
-    return this.http.post(this.url, data).toPromise();
+    const url = 'http://localhost:5000/user/login';
+    return this.http.post(url, data).toPromise();
+  }
+  forgotpassword(data){
+    const url = 'http://localhost:5000/forgotpassword';
+    return this.http.post(url, data).toPromise();
+
+  }
+  resetpassword(data){
+    const url = 'http://localhost:5000/resetpassword';
+    return this.http.post(url, data).toPromise();
   }
 }

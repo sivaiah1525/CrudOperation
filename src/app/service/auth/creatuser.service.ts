@@ -5,12 +5,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CreatuserService {
-  url = 'http://localhost:5000/user/creat';
 
   constructor(private http: HttpClient) { }
 
   CreatUser(data) {
-    return this.http.post(this.url, data).toPromise();
+    const url = 'http://localhost:5000/user/creat';
+    return this.http.post(url, data).toPromise();
 
   }
 }

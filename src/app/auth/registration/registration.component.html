@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" formControlName="mailId" placeholder="Enter-email">
+                <input type="email" autocomplete="on" class="form-control" formControlName="mailId" placeholder="Enter-email">
                 <div *ngIf="registrationform.controls.mailId.errors">
                     <span *ngIf="registrationform.controls.mailId.invalid && registrationform.controls.mailId.touched ">please Enter mailId</span>
                 </div>

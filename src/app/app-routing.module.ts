@@ -8,11 +8,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [{ path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule) },
 { path: 'registration', loadChildren: () => import('./auth/registration/registration.module').then(m => m.RegistrationModule) },
-{ path: '', redirectTo: '/registration', pathMatch: 'full' },
+{ path: '', redirectTo: '/login', pathMatch: 'full' },
 { path: 'home', component: HomeComponent },
-{ path: 'student-view', component: StudentViewComponent },
-{ path: 'student-edit', component: StudentEditComponent },
-{ path: 'navbar', component: NavbarComponent }];
+{ path: 'studentview', component: StudentViewComponent },
+{ path: 'studentedit', component: StudentEditComponent },
+{ path: 'navbar', component: NavbarComponent },
+{ path: 'forgotpassword', loadChildren: () => import('./auth/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule) },
+{ path: 'resetpassword', loadChildren: () => import('./auth/reset-password/reset-password.module').then(m => m.ResetPasswordModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
