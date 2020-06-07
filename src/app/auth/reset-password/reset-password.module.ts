@@ -1,3 +1,4 @@
+import { ToastrModule } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,8 @@ import { ResetPasswordComponent } from './reset-password.component';
   imports: [
     CommonModule,
     ResetPasswordRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ]
 })
 export class ResetPasswordModule { }

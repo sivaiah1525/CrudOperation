@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,9 @@ export class StudentEditComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private location: Location,
-    private service: TableService
+    private service: TableService,
+    private toastr: ToastrService,
+
   ) {
     this.studentEdit();
   }
@@ -47,6 +50,7 @@ export class StudentEditComponent implements OnInit {
     try {
       this.service.StudentUpdateById(data);
       this.location.back();
+      this.toastr.success('UpdateStudent successful');
     } catch (error) {
       console.log(error);
     }

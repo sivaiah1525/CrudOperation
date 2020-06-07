@@ -3,6 +3,7 @@ import { LoginService } from './../../service/auth/login.service';
 import { Component, OnInit } from '@angular/core';
 import {  FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private service: LoginService,
     private router: Router,
+    private toastr: ToastrService,
     private tokenserv: TokenServiceService
   ) { }
 
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
     try {
       this.JWTtoken = await this.service.LoginUser(data);
       this.tokenserv.saveToken(this.JWTtoken);
+      this.toastr.success('Login successful');
       this.router.navigate(['/home']);
     } catch (error) {
       alert('invalid mailid password');

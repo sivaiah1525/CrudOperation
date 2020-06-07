@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reset-password',
@@ -15,6 +16,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     private router: Router,
     private loginserve: LoginService,
+    private toastr: ToastrService,
     private snackBar: MatSnackBar,
 
   ) {
@@ -38,13 +40,12 @@ export class ResetPasswordComponent implements OnInit {
       console.log(resuilt);
       localStorage.removeItem('mailId');
       this.router.navigate(['/login']);
-      const message = 'successful update password';
-      this.snackBar.open(message, 'close', {
-        duration: 2000,
-      });
+      this.toastr.success('successful resetpassword');
 
     } catch (error) {
       console.log(error);
+      this.toastr.success('failed resetpassword');
+
     }
   }
 }

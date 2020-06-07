@@ -4,32 +4,35 @@
         <form [formGroup]="loginform" (ngSubmit)="savedata(loginform.value)">
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" autocomplete="on" class="form-control" formControlName="mailId" placeholder="Enter-email">
+                <input type="email" autocomplete="on" class="form-control" formControlName="mailId" placeholder="email">
                 <div *ngIf="loginform.controls.mailId.errors">
-                    <span *ngIf="loginform.controls.mailId.invalid && loginform.controls.mailId.touched ">please Enter mailId</span>
+                    <span *ngIf="loginform.controls.mailId.invalid && loginform.controls.mailId.touched "> Enter mailId</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="pwd">Password:</label>
-                <input type="password" class="form-control" formControlName="password" placeholder="Enter-password">
+                <input type="password" class="form-control" formControlName="password" placeholder="password">
                 <div *ngIf="loginform.controls.password.errors">
-                    <span *ngIf="loginform.controls.password.invalid && loginform.controls.password.touched ">please Enter password</span>
+                    <span *ngIf="loginform.controls.password.invalid && loginform.controls.password.touched ">Enter password</span>
                     <span *ngIf="loginform.controls.password.errors.minlength"> Length 6 latter</span>
                 </div>
             </div>
             <div class="form-group form-check">
                 <div class="row justify-content-around">
                     <div class="col-sm-6">
-                        <a routerLink="/registration">Creat user && Registration</a>
+                        <a routerLink="/registration"> Registration Here</a>
                     </div>
                     <div class="col-sm-6">
-                        <a routerLink="/forgotpassword"> Forgot-Password</a>
-
+                        <a routerLink="/forgotpassword"> ForgotPassword</a>
                     </div>
                 </div>
 
             </div>
-            <button type="submit" [disabled]="loginform.invalid" class="btn btn-primary">Submit</button>
+            <div class="row justify-content-center">
+                <div class="col-sm-4">
+                    <button type="submit" [disabled]="loginform.invalid" class="btn btn-primary w-100">Submit</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>

@@ -6,21 +6,21 @@
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" formControlName="name" placeholder="name">
                 <div *ngIf="registrationform.controls.name.errors">
-                    <span *ngIf="registrationform.controls.name.invalid && registrationform.controls.name.touched ">please Enter Name</span>
+                    <span *ngIf="registrationform.controls.name.invalid && registrationform.controls.name.touched "> Enter Name</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" autocomplete="on" class="form-control" formControlName="mailId" placeholder="Enter-email">
+                <input type="email" autocomplete="on" class="form-control" formControlName="mailId" placeholder="email">
                 <div *ngIf="registrationform.controls.mailId.errors">
-                    <span *ngIf="registrationform.controls.mailId.invalid && registrationform.controls.mailId.touched ">please Enter mailId</span>
+                    <span *ngIf="registrationform.controls.mailId.invalid && registrationform.controls.mailId.touched "> Enter mailId</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="pwd">Password:</label>
-                <input type="password" class="form-control" formControlName="password" placeholder="Enter-password">
+                <input type="password" class="form-control" formControlName="password" placeholder="password">
                 <div *ngIf="registrationform.controls.password.errors">
-                    <span *ngIf="registrationform.controls.password.invalid && registrationform.controls.password.touched ">please Enter password</span>
+                    <span *ngIf="registrationform.controls.password.invalid && registrationform.controls.password.touched "> Enter password</span>
                     <span *ngIf="registrationform.controls.password.errors.minlength"> Length 6 latter</span>
                 </div>
             </div>
@@ -29,7 +29,11 @@
                     <a routerLink="/login">already logged in</a>
             </label>
             </div>
-            <button type="submit" [disabled]="registrationform.invalid" class="btn btn-primary">Submit</button>
+            <div class="row justify-content-center">
+                <div class="col-sm-4">
+                    <button type="submit" [disabled]="registrationform.invalid" class="btn btn-primary w-100">Submit</button>
+                </div>
+            </div>
         </form>
     </div>
 

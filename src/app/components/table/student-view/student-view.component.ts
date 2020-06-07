@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-student-view',
@@ -12,7 +13,8 @@ export class StudentViewComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private route: Router,
-    private location: Location
+    private location: Location,
+
   ) {
     this.studentView();
   }

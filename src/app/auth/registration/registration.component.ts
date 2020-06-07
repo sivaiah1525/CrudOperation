@@ -2,6 +2,7 @@ import { CreatuserService } from './../../service/auth/creatuser.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -14,6 +15,7 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private service: CreatuserService,
     private router: Router,
+    private toastr: ToastrService,
     ) { }
 
   ngOnInit(): void {
@@ -28,8 +30,11 @@ export class RegistrationComponent implements OnInit {
     try {
       const result = await this.service.CreatUser(data);
       this.router.navigate(['/login']);
+      this.toastr.success('Registration successful');
     } catch (error) {
       console.log(error);
+      this.toastr.success('Registration failed');
+
     }
   }
 

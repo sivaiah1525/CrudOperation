@@ -3,7 +3,7 @@ import { LoginService } from './../../service/auth/login.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forgot-password',
@@ -16,7 +16,8 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private router: Router,
     private loginserve: LoginService,
-    private snackBar: MatSnackBar,
+    private toastr: ToastrService,
+
   ) { }
 
   ngOnInit(): void {
@@ -30,11 +31,9 @@ export class ForgotPasswordComponent implements OnInit {
       const result = await this.loginserve.forgotpassword(data);
       localStorage.setItem('mailId', this.forgotform.value.mailId);
       this.forgotpassword = true;
+
     } catch (error) {
-      const message = 'invalidate Email';
-      this.snackBar.open(message, 'close', {
-        duration: 2000,
-      });
+      this.toastr.success('invalidate Email');
       console.log(error);
     }
 

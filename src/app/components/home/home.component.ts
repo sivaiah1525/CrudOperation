@@ -44,11 +44,11 @@ export class HomeComponent implements OnInit {
   }
 
   studentview(data) {
-    this.router.navigate(['/student-view', data]);
+    this.router.navigate(['/studentview', data]);
   }
 
   studentedit(data) {
-    this.router.navigate(['/student-edit', data]);
+    this.router.navigate(['/studentedit', data]);
   }
   pagination(data) {
     this.skipcont = data;

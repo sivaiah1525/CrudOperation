@@ -11,7 +11,7 @@ export class TableService {
 
   // creatStudent New
   CreatStudent(data) {
-    const url = 'http://localhost:5000/user/student';
+    const url = 'http://localhost:4000/newstudent';
     return this.http.post(url, data).toPromise();
   }
 
@@ -24,19 +24,19 @@ export class TableService {
       sort,
       search
     };
-    const url = 'http://localhost:5000/user/student/all';
+    const url = 'http://localhost:4000/student/all';
     return this.http.get(url, { params }).toPromise();
   }
 
   // deletbyid
   StudentDeletById(data) {
-    const url = 'http://localhost:5000/user/student/deletbyid';
+    const url = 'http://localhost:4000/student/deletbyid';
     return this.http.post(url, { id: data }).toPromise();
   }
   // Updatebyid
   StudentUpdateById(data) {
 
-    const url = 'http://localhost:5000/user/student/updatebyid';
+    const url = 'http://localhost:4000/student/updatebyid';
     return this.http.put(url, data).toPromise();
   }
 

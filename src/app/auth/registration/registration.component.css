@@ -1,7 +1,20 @@
+.container-fluid {
+    background-image: url('../../../assets/Registration.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
 .registrationsection {
     width: 40%;
     margin: auto;
-    margin-top: 5%;
+    padding-top: 5%;
+}
+
+a {
+    color: yellow;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 span {

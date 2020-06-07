@@ -11,16 +11,16 @@ export class LoginService {
   ) { }
 
   LoginUser(data) {
-    const url = 'http://localhost:5000/user/login';
+    const url = 'http://localhost:4000/login';
     return this.http.post(url, data).toPromise();
   }
   forgotpassword(data){
-    const url = 'http://localhost:5000/forgotpassword';
+    const url = 'http://localhost:4000/maill/forgotpassword';
     return this.http.post(url, data).toPromise();
 
   }
   resetpassword(data){
-    const url = 'http://localhost:5000/resetpassword';
+    const url = 'http://localhost:4000/update/resetpassword';
     return this.http.post(url, data).toPromise();
   }
 }
