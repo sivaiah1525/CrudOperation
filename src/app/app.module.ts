@@ -1,4 +1,5 @@
 import { MessagingService } from './service/messaging.service';
+import { TokeninterceptorService } from './token/tokeninterceptor';
 import { environment } from './../environments/environment.prod';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,7 +7,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -41,7 +42,11 @@ import { AsyncPipe } from '@angular/common';
     AngularFireMessagingModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [MessagingService, AsyncPipe],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokeninterceptorService,
+    multi: true
+  }, AsyncPipe, MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

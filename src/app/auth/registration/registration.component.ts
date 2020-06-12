@@ -1,3 +1,4 @@
+import { PushNotificationService } from './../../service/push-notification.service';
 import { CreatuserService } from './../../service/auth/creatuser.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,8 @@ export class RegistrationComponent implements OnInit {
     private service: CreatuserService,
     private router: Router,
     private toastr: ToastrService,
-    ) { }
+    private PushNotificationServ: PushNotificationService
+  ) { }
 
   ngOnInit(): void {
     this.registrationform = new FormGroup({
@@ -28,6 +30,8 @@ export class RegistrationComponent implements OnInit {
 
   async savedata(data) {
     try {
+      // const result = await this.PushNotificationServ.Getpushnotification();
+      // console.log(result);
       const result = await this.service.CreatUser(data);
       this.router.navigate(['/login']);
       this.toastr.success('Registration successful');
