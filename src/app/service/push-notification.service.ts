@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 export class PushNotificationService {
   data = {
     notification: {
-      title: 'Hey there',
-      body: 'Subscribe  youtube channel'
+      title: 'User Notification',
+      body: 'add new User'
     },
     to: this.puastokenserve.getpushtoken()
   };

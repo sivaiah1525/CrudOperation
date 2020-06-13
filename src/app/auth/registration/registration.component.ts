@@ -31,7 +31,6 @@ export class RegistrationComponent implements OnInit {
   async savedata(data) {
     try {
       const notification = await this.PushNotificationServ.Getpushnotification();
-      console.log(notification);
       const result = await this.service.CreatUser(data);
       this.router.navigate(['/login']);
       this.toastr.success('Registration successful');
