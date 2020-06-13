@@ -1,5 +1,5 @@
+import { PushNotification } from './interceptor/push-notification';
 import { MessagingService } from './service/messaging.service';
-import { TokeninterceptorService } from './token/tokeninterceptor';
 import { environment } from './../environments/environment.prod';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,11 +42,13 @@ import { AsyncPipe } from '@angular/common';
     AngularFireMessagingModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [{
+  providers: [
+    {
     provide: HTTP_INTERCEPTORS,
-    useClass: TokeninterceptorService,
+    useClass: PushNotification,
     multi: true
-  }, AsyncPipe, MessagingService],
+  },
+   AsyncPipe, MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
