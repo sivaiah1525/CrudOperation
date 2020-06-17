@@ -43,11 +43,11 @@ import { AsyncPipe } from '@angular/common';
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
-    {
-    provide: HTTP_INTERCEPTORS,
-    useClass: PushNotification,
-    multi: true
-  },
+  //   {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: PushNotification,
+  //   multi: true
+  // },
    AsyncPipe, MessagingService],
   bootstrap: [AppComponent]
 })
