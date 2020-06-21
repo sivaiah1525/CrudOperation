@@ -21,6 +21,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AngularFireModule } from '@angular/fire';
 import { AsyncPipe } from '@angular/common';
+import { SettingComponent } from './components/setting/setting.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AsyncPipe } from '@angular/common';
     NavbarComponent,
     HomeComponent,
     StudentEditComponent,
-    StudentViewComponent],
+    StudentViewComponent,
+    SettingComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,

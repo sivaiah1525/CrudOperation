@@ -10,6 +10,7 @@ const routes: Routes = [{ path: 'login', loadChildren: () => import('./auth/logi
 { path: 'registration', loadChildren: () => import('./auth/registration/registration.module').then(m => m.RegistrationModule) },
 { path: '', redirectTo: '/login', pathMatch: 'full' },
 { path: 'home', component: HomeComponent },
+{ path: 'setting', component: HomeComponent },
 { path: 'studentview', component: StudentViewComponent },
 { path: 'studentedit', component: StudentEditComponent },
 { path: 'navbar', component: NavbarComponent },
